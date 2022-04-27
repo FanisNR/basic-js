@@ -16,10 +16,17 @@ const { NotImplementedError } = require('../extensions/index.js');
 function createDreamTeam(members ) {
   // throw new NotImplementedError('Not implemented');
   for(let i = 0; i < members.length; i++) {
-    if(typeof members[i] == 'string'){
+    if(typeof members[i] == 'number'){
+      continue
+    } else if(typeof members[i] === 'string'){
+      team = ''
       team = team + members[i].charAt(0)
-    }
-  } return (team.toUpperCase()).split('').sort().join('');
+    } 
+  } if((typeof team !== 'string')) {
+    return false
+  } else  {
+    return (team.toUpperCase()).split('').sort().join('');
+  }
 } 
 
 module.exports = {
